@@ -1,8 +1,5 @@
 from datetime import datetime
-
-
 agendamentos: list[Agendamento] = []
-
 
 def data_valida(data_informada):
     return data_informada >= datetime.now().date()
@@ -18,7 +15,6 @@ class Agendamento:
     def __str__ (self):
         return f"{self.nome_evento} ({self.data.strftime ('%d-%m-%Y')})"
 
-
 while True:
     print("\n1. Realizar agendamento")
     print("2. Visualizar todos os agendamentos")
@@ -31,10 +27,10 @@ while True:
     match opcao:
         case "1":
             data_informada = input("Digite a data (DD-MM-AAAA): ")
-            nome_evento = input("Digite o nome do evento: ")
             data = datetime.strptime(data_informada, "%d-%m-%Y").date()
             if not data_valida(data):
                 print("Data inválida")
+                nome_evento = input("Digite o nome do evento: ")
                 continue
             agendamento = Agendamento(data, nome_evento)
             agendamentos.append(agendamento)
@@ -72,5 +68,3 @@ while True:
 
         case _:
             print("\033[31mOpção inválida.\033[0m")
-
-

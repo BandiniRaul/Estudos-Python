@@ -1,6 +1,5 @@
 vezes = 0
 
-
 numero = int(input("Digite um número inteiro: "))
 while vezes < 10:
     vezes += 1
