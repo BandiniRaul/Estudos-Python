@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-class Veiculo:
+class Veiculo(ABC):
 
     def __init__(self, marca, modelo):
         self.marca = marca
