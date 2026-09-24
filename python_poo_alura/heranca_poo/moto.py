@@ -8,3 +8,6 @@ class Moto(Veiculo):
 
     def __str__(self):
         return f"{super().__str__()} - Tipo da moto: {self.tipo}"
+
+    def ligar():
+        pass
