@@ -15,10 +15,10 @@ cursor.execute(
 
 cursor.execute(
     """
-        CREATE TABLE IF NOT EXISTS disciplinasid(
+        CREATE TABLE IF NOT EXISTS disciplinas(
             id INTEGER PRIMARY KEY,
             nome_disciplina TEXT,
-            estudante_id INTEGER
+            estudante_id INTEGER,
             FOREIGN KEY (estudante_id) \
                 REFERENCES estudantes(id)
         )
