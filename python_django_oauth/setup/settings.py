@@ -12,16 +12,18 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(BASE_DIR / '.env')
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = str(os.getenv('SECRET_KEY'))
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -144,9 +146,17 @@ MAILERS = {
 SOCIALACCOUNT_PROVIDERS = {
     'github': {
         'APP': {
-            'client_id': str(os.getenv('CLIENT_ID_GITHUB')),
-            'secret': str(os.getenv('SECRET_KEY_GITHUB')),
+            'client_id': os.environ['CLIENT_ID_GITHUB'],
+            'secret': os.environ['SECRET_KEY_GITHUB'],
             'key': ''
         }
     }
 }
+
+LOGIN_REDIRECT_URL = '/members'
+
+SOCIALACCOUNT_LOGIN_ON_GET = True
+
+ACCOUNT_LOGOUT_ON_GET = True
+
+LOGOUT_REDIRECT_URL = '/'
